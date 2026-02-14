@@ -114,6 +114,14 @@ body{
     font-weight: 600;
 }
 
+.p1{
+    margin-left: 60px;
+    text-decoration: none;
+}
+.p1:hover{
+    text-decoration: underline;
+}
+
 .fr:hover{
     text-decoration: underline;
     color: black;

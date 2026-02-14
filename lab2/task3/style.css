@@ -136,8 +136,12 @@ body{
     box-shadow: none;
     transform: translateX(-4px);
     
+    
 }
 
+.cont:hover{
+    cursor: pointer;
+}
 .bt1{
     height: 42px;
     width: 150px;
