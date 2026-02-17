@@ -1,0 +1,47 @@
+import { Component, Input } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { Product } from '../../models/product';
+
+@Component({
+  selector: 'app-product-card',
+  standalone: true,
+  imports: [CommonModule],
+  templateUrl: './product-card.html',
+  styleUrl: './product-card.css',
+})
+export class ProductCardComponent {
+  @Input({ required: true }) product!: Product;
+
+  selectedImageIndex = 0;
+
+  get mainImage(): string {
+    return this.product.images?.length
+      ? this.product.images[this.selectedImageIndex]
+      : this.product.image;
+  }
+
+  stars(): number[] {
+    const full = Math.round(this.product.rating); // упрощённо
+    return Array.from({ length: 5 }, (_, i) => (i < full ? 1 : 0));
+  }
+
+  openKaspi(): void {
+    window.open(this.product.link, '_blank');
+  }
+
+  shareWhatsapp(): void {
+    const url = encodeURIComponent(this.product.link);
+    const text = encodeURIComponent(`Check out this product: `);
+    window.open(`https://wa.me/?text=${text}${url}`, '_blank');
+  }
+
+  shareTelegram(): void {
+    const url = encodeURIComponent(this.product.link);
+    const text = encodeURIComponent(this.product.name);
+    window.open(`https://t.me/share/url?url=${url}&text=${text}`, '_blank');
+  }
+
+  selectImage(i: number): void {
+    this.selectedImageIndex = i;
+  }
+}
