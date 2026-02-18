@@ -1,7 +1,6 @@
 const form = document.getElementById('taskform');
 const input = document.getElementById('taskinput');
 const list = document.getElementById('tasklist');
-const counter = document.getElementById('counter');
 
 form.addEventListener('submit', function (e) {
     e.preventDefault();
@@ -44,22 +43,8 @@ form.addEventListener('submit', function (e) {
 
     deleteBtn.addEventListener('click', function() {
         li.remove();
-        cnt();
     });
 
-
-    function cnt(){
-        const tasks = list.children;
-        let total = 0;
-
-        for(let task of tasks){
-            const cn = task.querySelector('input[type="checkbox"]');
-                total++;
-            
-        }
-
-        counter.textContent = `Total tasks: ${total}`;
-    }
 
 
 
@@ -68,7 +53,6 @@ form.addEventListener('submit', function (e) {
     li.appendChild(deleteBtn);
 
     list.appendChild(li);
-    cnt();
 
     input.value = '';
     input.focus();
